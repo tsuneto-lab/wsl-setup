@@ -1,0 +1,39 @@
+- name: Add Docker GPG apt Key
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  become: true
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Update apt and install docker-ce
+  become: true
+  apt:
+    name: docker-ce
+    state: latest
+    update_cache: true
+
+- name: Docker sudoer
+  become: true
+  copy:
+    content: |
+      ubuntu ALL=NOPASSWD: /usr/sbin/service docker start, /usr/sbin/service docker stop, /usr/sbin/service docker restart
+    dest: /etc/sudoers.d/docker
+
+- name: Docker starter script
+  copy:
+    content: |
+      service docker status > /dev/null 2>&1
+      if [ $? = 1 ]; then
+          sudo service docker start
+      fi
+    dest: /home/ubuntu/.start_docker
+
+- name: Start docker on shell login
+  lineinfile:
+    path: /home/ubuntu/.profile
+    line: . /home/ubuntu/.start_docker
