@@ -1,6 +1,8 @@
+- name: Update and upgrade packages
+  import_tasks: packages.yml
+
+- name: Fix date
+  import_tasks: date.yml
+
 - name: Enable systemd
-  become: true
-  copy:
-    src: wsl.conf
-    dest: /etc/wsl.conf
-    mode: '644'
+  import_tasks: systemd.yml
