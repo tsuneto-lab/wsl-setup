@@ -1,5 +1,9 @@
 # WSL setup
 
+```bash
+git clone https://github.com/tsuneto-lab/wsl-setup.git
+```
+
 ## prerequisite
 
 ```bash
