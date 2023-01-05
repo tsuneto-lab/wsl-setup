@@ -6,10 +6,6 @@
 sudo apt update
 sudo apt upgrade
 
-# fix date
-sudo apt install ntpdate
-sudo ntpdate ntp.nict.jp
-
 sudo apt-get install python3-pip
 python3 -m pip install --user ansible
 
