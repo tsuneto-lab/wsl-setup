@@ -25,6 +25,6 @@ ansible-playbook -K main.yml
 
 docker run hello-world
 
-ansible-playbook -K docker-cuda.yml
+ansible-playbook -K nvidia-docker.yml
 docker run --rm --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
 ```
