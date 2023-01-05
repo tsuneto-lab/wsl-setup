@@ -1,0 +1,11 @@
+- name: Install ntp package
+  become: true
+  ansible.builtin.apt:
+    name:
+      - ntpdate
+    state: present
+    update_cache: true
+
+- name: Fix date
+  become: true
+  shell: ntpdate ntp.nict.jp

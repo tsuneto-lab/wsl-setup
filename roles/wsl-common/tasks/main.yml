@@ -1,0 +1,6 @@
+- name: Enable systemd
+  become: true
+  copy:
+    src: wsl.conf
+    dest: /etc/wsl.conf
+    mode: '644'

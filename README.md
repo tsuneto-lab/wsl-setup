@@ -3,6 +3,9 @@
 ## prerequisite
 
 ```bash
+sudo apt update
+sudo apt upgrade
+
 # fix date
 sudo apt install ntpdate
 sudo ntpdate ntp.nict.jp
@@ -17,4 +20,11 @@ source ~/.profile
 
 ```bash
 ansible-playbook -K main.yml
+# restart wsl manually from windows
+# e.g. wsl -t Ubuntu-20.04
+
+docker run hello-world
+
+ansible-playbook -K docker-cuda.yml
+docker run --rm --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
 ```
